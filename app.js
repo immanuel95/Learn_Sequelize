@@ -1,20 +1,21 @@
 const express = require('express');
+const app = express();
 const bodyParser = require('body-parser');
-const port = 5000;
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 const sequelize = require('./util/database');
-
-const app = express();
-
-app.use(bodyParser.urlencoded({ extended: false }));
 
 const shopRoutes = require('./routes/shop');
 
 app.use(shopRoutes);
 
+const port = 5000;
+
 sequelize
   .sync()
-  .then(result => {
+  .then(() => {
     app.listen(port, () => console.log(`App listening on port ${port}!`));
   })
   .catch(err => console.log(err));

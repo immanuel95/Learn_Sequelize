@@ -9,16 +9,12 @@ exports.getProducts = (req, res) => {
 };
 
 exports.addProduct = (req, res) => {
-  const title = req.body.title;
-  const imageUrl = req.body.imageUrl;
-  const price = req.body.price;
   Product.create({
-    title: title,
-    price: price,
-    imageUrl: imageUrl
+    title: req.body.title,
+    price: req.body.price,
+    imageUrl: req.body.imageUrl
   })
     .then(result => {
-      console.log('add product success');
       res.send(result);
     })
     .catch(err => {
