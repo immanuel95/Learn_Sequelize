@@ -35,8 +35,8 @@ exports.editProduct = (req, res) => {
       product.imageUrl = updatedImageUrl;
       return product.save();
     })
-    .then(result => {
-      res.send(result);
+    .then(() => {
+      res.redirect('/products');
     })
     .catch(err => console.log(err));
 };
