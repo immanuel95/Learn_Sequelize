@@ -16,6 +16,6 @@ const port = 5000;
 sequelize
   .sync()
   .then(() => {
-    app.listen(port, () => console.log(`App listening on port ${port}!`));
+    app.listen(port, () => console.log(`App is listening to port ${port}!`));
   })
   .catch(err => console.log(err));
